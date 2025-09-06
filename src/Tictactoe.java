@@ -36,6 +36,7 @@ public class Tictactoe implements ActionListener {
 
         textField.setBackground(new Color(25,25,25));
         textField.setForeground(new Color(25,255,0));
+
         textField.setFont(new Font("MV Boli",Font.BOLD,75));
         textField.setHorizontalAlignment(JLabel.CENTER);
         textField.setText("Tic-Tac-Toe");
@@ -75,6 +76,7 @@ public class Tictactoe implements ActionListener {
                         buttons[i].setText("X");
                         player1_turn=false;
                         textField.setText("O turn");
+                        textField.setForeground(new Color(0,0,255));
                         check();
                     }
                 }
@@ -83,6 +85,7 @@ public class Tictactoe implements ActionListener {
                         buttons[i].setText("O");
                         player1_turn=true;
                         textField.setText("X turn");
+                        textField.setForeground(new Color(255,0,0));
                         check();
                 }
             }
@@ -92,17 +95,19 @@ public class Tictactoe implements ActionListener {
 
     public void firstTurn (){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         if (random.nextInt(2)==0){
             player1_turn = true;
             textField.setText("X turn");
+            textField.setForeground(new Color(255,0,0));
         }
         else {
             player1_turn = false;
             textField.setText("O turn");
+            textField.setForeground(new Color(0,0,255));
         }
     }
 
@@ -212,6 +217,7 @@ public class Tictactoe implements ActionListener {
         }
 
         if (tie) {
+            textField.setForeground(new Color(125,125,125));
             textField.setText("DRAW");
             for (int i = 0; i < 9; i++) {
                 buttons[i].setEnabled(false);
@@ -228,6 +234,7 @@ public class Tictactoe implements ActionListener {
             buttons[i].setEnabled(false);
         }
         textField.setText("X WINS");
+        textField.setForeground(new Color(255,0,0));
     }
 
     public void oWins (int a , int b, int c){
@@ -238,6 +245,7 @@ public class Tictactoe implements ActionListener {
             buttons[i].setEnabled(false);
         }
         textField.setText("O WINS");
+        textField.setForeground(new Color(0,0,255));
     }
 
     public void resetGame() {
